@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>윤태섭의 목표 페이지</title>
+
+  <!-- =========================
+       날짜 설정: 여기만 수정하세요!
+       ========================= -->
+  <script>
+    const targetDate = "2027-11-18";
+    const targetLabel = "수능까지";
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 30px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #eeeafe;
+      font-family: Arial, "Malgun Gothic",
+                   "Apple SD Gothic Neo", sans-serif;
+      color: #27233b;
+      overflow-x: hidden;
+    }
+
+    /* ===== D-day ===== */
+    .dday {
+      width: 100%;
+      max-width: 360px;
+      padding: 24px 16px;
+      margin-bottom: 20px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #7653d6, #a48aef);
+      color: white;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(70, 50, 120, 0.15);
+    }
+
+    .dday-number {
+      margin: 0 0 8px;
+      font-size: clamp(48px, 12vw, 68px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .dday-label {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* ===== 자기소개 카드 ===== */
+    .card {
+      width: 100%;
+      max-width: 360px;
+      padding: 32px 24px;
+      margin-bottom: 30px;
+      background: white;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(70, 50, 120, 0.12);
+    }
+
+    .emoji {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f2edff;
+      border-radius: 24px;
+      font-size: 64px;
+    }
+
+    .card h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      word-break: keep-all;
+    }
+
+    .intro {
+      margin: 0 0 24px;
+      color: #716b83;
+      font-size: 15px;
+      line-height: 1.7;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tag {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: #f0eafe;
+      color: #6b48b8;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .github-button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      background: #7653d6;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .github-button:hover {
+      background: #6040b8;
+    }
+
+    /* ===== 만다라트 ===== */
+    .mandalart {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      padding: 16px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 35px rgba(70, 50, 120, 0.12);
+    }
+
+    .mandalart-title {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .mandalart-guide {
+      margin: 0 0 20px;
+      text-align: center;
+      color: #716b83;
+      font-size: 14px;
+    }
+
+    .mandalart-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      width: 100%;
+    }
+
+    .goal-cell {
+      aspect-ratio: 1 / 1;
+      min-width: 0;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+      overflow-y: auto;
+
+      background: #f0eafe;
+      border: 2px solid #ded2fa;
+      border-radius: 12px;
+      text-align: center;
+      font-size: clamp(11px, 3.2vw, 16px);
+      font-weight: 600;
+      line-height: 1.5;
+      cursor: text;
+      outline: none;
+    }
+
+    .goal-cell:focus {
+      border-color: #7653d6;
+      background: #faf8ff;
+    }
+
+    .goal-cell.main-goal {
+      background: #7653d6;
+      color: white;
+      border-color: #7653d6;
+      font-size: clamp(13px, 3.6vw, 19px);
+      font-weight: 800;
+    }
+
+    .goal-cell.main-goal:focus {
+      background: #6040b8;
+    }
+
+    .mandalart-status {
+      margin: 14px 0 0;
+      text-align: center;
+      font-size: 12px;
+      color: #716b83;
+    }
+
+    @media (max-width: 360px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .mandalart {
+        padding: 10px;
+      }
+
+      .mandalart-grid {
+        gap: 4px;
+      }
+
+      .goal-cell {
+        padding: 4px;
+        border-radius: 8px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== 1. 수능 D-day ===== -->
+  <section class="dday">
+    <p class="dday-number" id="ddayNumber">D-day</p>
+    <p class="dday-label" id="ddayLabel"></p>
+  </section>
+
+  <!-- ===== 2. 자기소개 카드 ===== -->
+  <main class="card">
+    <div class="emoji">😊</div>
+
+    <h1>윤태섭</h1>
+
+    <p class="intro">
+      로봇, 코딩을 좋아하는 고등학교 2학년입니다
+    </p>
+
+    <div class="tags">
+      <span class="tag">🎵 음악</span>
+      <span class="tag">🤖 로봇</span>
+      <span class="tag">🏃 운동</span>
+    </div>
+
+    <a
+      class="github-button"
+      href="https://github.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      내 깃허브 ↗
+    </a>
+  </main>
+
+  <!-- ===== 3. 만다라트 목표판 ===== -->
+  <section class="mandalart">
+    <h2 class="mandalart-title">나의 목표</h2>
+    <p class="mandalart-guide">
+      칸을 눌러서 고칠 수 있어요
+    </p>
+
+    <div class="mandalart-grid" id="mandalartGrid">
+      <div class="goal-cell" contenteditable="true">매일 30분 영어 듣기</div>
+      <div class="goal-cell" contenteditable="true">수학 오답노트</div>
+      <div class="goal-cell" contenteditable="true">주 3회 운동</div>
+
+      <div class="goal-cell" contenteditable="true">독서 월 2권</div>
+      <div class="goal-cell main-goal" contenteditable="true">로봇공학과 진학</div>
+      <div class="goal-cell" contenteditable="true">동아리 발표</div>
+
+      <div class="goal-cell" contenteditable="true">7시간 수면</div>
+      <div class="goal-cell" contenteditable="true">봉사활동 20시간</div>
+      <div class="goal-cell" contenteditable="true">코딩 포트폴리오</div>
+    </div>
+
+    <p class="mandalart-status" id="mandalartStatus">
+      수정한 내용은 자동으로 저장돼요.
+    </p>
+  </section>
+
+  <script>
+    // ===== D-day 자동 계산 =====
+    function updateDday() {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const target = new Date(targetDate + "T00:00:00");
+      const remaining = Math.round(
+        (target.getTime() - today.getTime()) /
+        (1000 * 60 * 60 * 24)
+      );
+
+      let result;
+
+      if (remaining > 0) {
+        result = `D-${remaining}`;
+      } else if (remaining === 0) {
+        result = "D-Day";
+      } else {
+        result = `D+${Math.abs(remaining)}`;
+      }
+
+      document.getElementById("ddayNumber").textContent = result;
+      document.getElementById("ddayLabel").textContent = targetLabel;
+    }
+
+    updateDday();
+
+    // ===== 만다라트 자동 저장 =====
+    (() => {
+      const grid = document.getElementById("mandalartGrid");
+      const status = document.getElementById("mandalartStatus");
+      const storageKey = "myMandalartGoals";
+      const cells = grid.querySelectorAll(".goal-cell");
+
+      // 저장된 목표 불러오기
+      try {
+        const saved = localStorage.getItem(storageKey);
+
+        if (saved) {
+          const goals = JSON.parse(saved);
+
+          cells.forEach((cell, index) => {
+            if (typeof goals[index] === "string") {
+              cell.textContent = goals[index];
+            }
+          });
+        }
+      } catch (error) {
+        status.textContent = "저장된 내용을 불러오지 못했어요.";
+      }
+
+      // 글자를 수정하면 자동 저장
+      cells.forEach((cell) => {
+        cell.addEventListener("input", () => {
+          try {
+            const goals = Array.from(cells).map(
+              (item) => item.textContent
+            );
+
+            localStorage.setItem(
+              storageKey,
+              JSON.stringify(goals)
+            );
+
+            status.textContent = "자동 저장 완료 ✓";
+          } catch (error) {
+            status.textContent = "저장에 실패했어요.";
+          }
+        });
+
+        // Enter를 누르면 편집 종료
+        cell.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            cell.blur();
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

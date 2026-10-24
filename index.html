@@ -26,10 +26,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #eeeafe;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 205, 220, 0.38), transparent 25%),
+        radial-gradient(circle at 92% 18%, rgba(255, 232, 190, 0.42), transparent 27%),
+        radial-gradient(circle at 88% 78%, rgba(210, 198, 255, 0.30), transparent 28%),
+        radial-gradient(circle at 12% 82%, rgba(190, 240, 220, 0.34), transparent 26%),
+        #fffaff;
       font-family: Arial, "Malgun Gothic",
                    "Apple SD Gothic Neo", sans-serif;
-      color: #27233b;
+      color: #263747;
       overflow-x: hidden;
     }
 
@@ -40,10 +45,26 @@
       padding: 24px 16px;
       margin-bottom: 20px;
       border-radius: 24px;
-      background: linear-gradient(135deg, #7653d6, #a48aef);
-      color: white;
+      background: linear-gradient(115deg, #ffc7d8 0%, #ffe0b8 25%, #fff2b8 45%, #c9f2d7 65%, #c9eaff 82%, #dfd3ff 100%);
+      color: #594b68;
       text-align: center;
-      box-shadow: 0 12px 30px rgba(70, 50, 120, 0.15);
+      box-shadow: 0 10px 24px rgba(170, 140, 190, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dday::after {
+      content: "";
+      position: absolute;
+      width: 115px;
+      height: 115px;
+      right: -38px;
+      top: -45px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 50%;
+      box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.07);
+      pointer-events: none;
     }
 
     .dday-number {
@@ -68,7 +89,14 @@
       background: white;
       border-radius: 24px;
       text-align: center;
-      box-shadow: 0 12px 35px rgba(70, 50, 120, 0.12);
+      box-shadow: 0 8px 26px rgba(154, 124, 173, 0.10);
+      border: 1px solid rgba(232, 211, 241, 0.72);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover,
+    .mandalart:hover {
+      box-shadow: 0 12px 30px rgba(154, 124, 173, 0.15);
     }
 
     .emoji {
@@ -78,8 +106,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f2edff;
-      border-radius: 24px;
+      background: linear-gradient(145deg, #ffe0eb, #e7ddff 55%, #d9f5ee);
+      border: 1px solid #f0e1f5;
+      border-radius: 28px;
+      box-shadow: 0 6px 16px rgba(180, 145, 196, 0.12);
       font-size: 64px;
     }
 
@@ -109,11 +139,18 @@
     .tag {
       padding: 9px 14px;
       border-radius: 999px;
-      background: #f0eafe;
-      color: #6b48b8;
+      background: #f4eaff;
+      border: 1px solid #e9dcf7;
+      color: #755b91;
       font-size: 14px;
       font-weight: bold;
       white-space: nowrap;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+      background: #eadcff;
     }
 
     .github-button {
@@ -121,16 +158,18 @@
       width: 100%;
       padding: 14px;
       border-radius: 14px;
-      background: #7653d6;
-      color: white;
+      background: linear-gradient(110deg, #f4b9ce, #c9c2f6, #b9e8e4);
+      color: #514663;
       text-decoration: none;
       font-size: 16px;
       font-weight: bold;
-      transition: background 0.2s;
+      box-shadow: 0 5px 14px rgba(178, 145, 190, 0.20);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .github-button:hover {
-      background: #6040b8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(178, 145, 190, 0.25);
     }
 
     /* ===== 만다라트 ===== */
@@ -139,15 +178,28 @@
       max-width: 600px;
       margin: 0 auto 30px;
       padding: 16px;
-      background: white;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(232, 211, 241, 0.72);
       border-radius: 24px;
-      box-shadow: 0 12px 35px rgba(70, 50, 120, 0.12);
+      box-shadow: 0 8px 26px rgba(154, 124, 173, 0.10);
+      transition: box-shadow 0.22s ease;
     }
 
     .mandalart-title {
       margin: 0 0 8px;
       text-align: center;
       font-size: 28px;
+      letter-spacing: -0.7px;
+    }
+
+    .mandalart-title::after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 3px;
+      margin: 9px auto 0;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #f7bfd2, #ffe1b9, #fff0b5, #c8ebd2, #c7e8fa, #d8c9f5);
     }
 
     .mandalart-guide {
@@ -175,8 +227,8 @@
       word-break: keep-all;
       overflow-y: auto;
 
-      background: #f0eafe;
-      border: 2px solid #ded2fa;
+      background: #fff0f4;
+      border: 2px solid #f6cfdd;
       border-radius: 12px;
       text-align: center;
       font-size: clamp(11px, 3.2vw, 16px);
@@ -184,23 +236,39 @@
       line-height: 1.5;
       cursor: text;
       outline: none;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+
+    .goal-cell:nth-child(2) { background: #fff4e6; border-color: #f5dfbd; }
+    .goal-cell:nth-child(3) { background: #fff9dc; border-color: #f0e6ad; }
+    .goal-cell:nth-child(4) { background: #eaf8ed; border-color: #ccebd3; }
+    .goal-cell:nth-child(5) { background: #e9f5ff; border-color: #c9e3fa; }
+    .goal-cell:nth-child(6) { background: #f0eaff; border-color: #d9cef8; }
+    .goal-cell:nth-child(7) { background: #fceaff; border-color: #efcfee; }
+    .goal-cell:nth-child(8) { background: #ffedf0; border-color: #f4d0d9; }
+    .goal-cell:nth-child(9) { background: #e8f8f3; border-color: #c7eadd; }
+
+    .goal-cell:hover {
+      border-color: #c5b2e7;
+      transform: translateY(-1px);
     }
 
     .goal-cell:focus {
-      border-color: #7653d6;
-      background: #faf8ff;
+      border-color: #b9a4dc;
+      background: #fffaff;
+      box-shadow: 0 0 0 2px rgba(185, 164, 220, 0.15);
     }
 
     .goal-cell.main-goal {
-      background: #7653d6;
-      color: white;
-      border-color: #7653d6;
+      background: linear-gradient(145deg, #d8ccff, #c8e8ff);
+      color: #514663;
+      border-color: #cbbdf5;
       font-size: clamp(13px, 3.6vw, 19px);
       font-weight: 800;
     }
 
     .goal-cell.main-goal:focus {
-      background: #6040b8;
+      background: linear-gradient(145deg, #cbbdf5, #b9def8);
     }
 
     .mandalart-status {
@@ -229,10 +297,28 @@
         font-size: 11px;
       }
     }
+
+    /* ===== 입장 폭죽 효과 ===== */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #confettiCanvas {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
 
   <!-- ===== 1. 수능 D-day ===== -->
   <section class="dday">
@@ -372,6 +458,108 @@
         });
       });
     })();
+  </script>
+
+  <script>
+
+    // ===== 페이지에 들어오면 하늘색 폭죽이 터지는 효과 =====
+    (() => {
+      const canvas = document.getElementById("confettiCanvas");
+      if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      let width = 0;
+      let height = 0;
+      let particles = [];
+      let animationId = null;
+
+      const colors = ["#ffc7d8", "#ffe0b8", "#fff2b8", "#c9f2d7", "#c9eaff", "#dfd3ff", "#ffffff"];
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function burst(x, y, amount = 90) {
+        for (let i = 0; i < amount; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 2 + Math.random() * 6;
+          particles.push({
+            x, y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            gravity: 0.055 + Math.random() * 0.055,
+            size: 3 + Math.random() * 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * Math.PI * 2,
+            spin: (Math.random() - 0.5) * 0.22,
+            life: 70 + Math.random() * 45,
+            maxLife: 115,
+            shape: Math.random() > 0.5 ? "rect" : "circle"
+          });
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles = particles.filter(p => p.life > 0);
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.vx *= 0.99;
+          p.rotation += p.spin;
+          p.life--;
+
+          ctx.save();
+          ctx.globalAlpha = Math.min(1, p.life / 24);
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.fillStyle = p.color;
+
+          if (p.shape === "rect") {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.7);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+
+        if (particles.length > 0) {
+          animationId = requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, width, height);
+          animationId = null;
+        }
+      }
+
+      function launchConfetti() {
+        resizeCanvas();
+        // 세 군데에서 연속으로 터지는 느낌
+        burst(width * 0.22, height * 0.28, 48);
+        burst(width * 0.78, height * 0.25, 48);
+        burst(width * 0.50, height * 0.18, 58);
+
+        if (animationId === null) animate();
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+      window.addEventListener("pageshow", launchConfetti);
+      resizeCanvas();
+      launchConfetti();
+    })();
+
   </script>
 
 </body>
